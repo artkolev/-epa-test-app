@@ -15,7 +15,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private int $id;
+    private int $id {
+        get {
+            return $this->id;
+        }
+    }
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     private ?string $email;
@@ -28,11 +32,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string')]
     private string $sault;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getEmail(): ?string
     {

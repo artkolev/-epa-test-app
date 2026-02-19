@@ -9,7 +9,7 @@ use Doctrine\Migrations\AbstractMigration;
 
 final class Version20260219065451 extends AbstractMigration
 {
-    const TABLENAME = 'user';
+    const string TABLENAME = 'user';
 
     public function getDescription(): string
     {
