@@ -11,40 +11,50 @@ class Service
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null {
-        get {
-            return $this->id;
-        }
-    }
+    private ?int $id = null;
 
     #[ORM\Column(type: 'string')]
-    private string $title {
-        get {
-            return $this->title;
-        }
-        set {
-            $this->title = $value;
-        }
-    }
+    private string $title;
 
     #[ORM\Column(type: 'integer')]
-    private string $price {
-        get {
-            return $this->price;
-        }
-        set {
-            $this->price = $value;
-        }
+    private string $price;
+
+    #[ORM\Column(type: 'boolean')]
+    private bool $active;
+
+    public function getId(): ?int
+    {
+        return $this->id;
     }
 
-    #[ORM\OneToMany(targetEntity: Order::class, mappedBy: "id")]
-    private array $serviceOrders {
-        get {
-            return $this->serviceOrders;
-        }
-        set {
-            $this->serviceOrders = $value;
-        }
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): void
+    {
+        $this->title = $title;
+    }
+
+    public function getPrice(): string
+    {
+        return $this->price;
+    }
+
+    public function setPrice(string $price): void
+    {
+        $this->price = $price;
+    }
+
+    public function isActive(): bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): void
+    {
+        $this->active = $active;
     }
 
 }

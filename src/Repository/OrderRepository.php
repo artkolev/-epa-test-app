@@ -27,10 +27,10 @@ class OrderRepository extends ServiceEntityRepository
 
     public function getOrdersByUser(User|UserInterface $user, $page = 1, $limit = 10): array
     {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.userId = :user')
+        return $this->createQueryBuilder('o')
+            ->andWhere('o.userId = :user')
             ->setParameter('user', $user->getId())
-            ->orderBy('s.id', 'ASC')
+            ->orderBy('o.id', 'ASC')
             ->setFirstResult(($page -1) * 10)
             ->setMaxResults($limit)
             ->getQuery()

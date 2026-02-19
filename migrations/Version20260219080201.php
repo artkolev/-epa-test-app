@@ -24,7 +24,9 @@ CREATE TABLE  `' . self::TABLENAME . '` (
     id INT AUTO_INCREMENT NOT NULL,
     title VARCHAR(255) NOT NULL,
     price INT NOT NULL,
-    PRIMARY KEY (id)
+    active TINYINT(1) NOT NULL DEFAULT 1,
+    PRIMARY KEY (id),
+    INDEX active (active)
 ) DEFAULT CHARACTER SET utf8mb4
         ');
     }

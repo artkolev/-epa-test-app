@@ -22,4 +22,36 @@ class ServiceRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Service::class);
     }
+
+    public function getActiveServices(): array
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.active = 1')
+            ->getQuery()
+            ->getArrayResult();
+    }
+
+    public function getNameActiveServices()
+    {
+        return $this->createQueryBuilder('s')
+            ->select('s.title')
+            ->andWhere('s.active = 1')
+            ->getQuery()
+            ->getSingleColumnResult();
+    }
+
+    public function getNamesActiveServices()
+    {
+        $services = $this->createQueryBuilder('s')
+        ->select('s.id, s.title')
+        ->andWhere('s.active = 1')
+        ->getQuery()
+        ->getArrayResult();
+
+        $result = [];
+        foreach ($services as $service) {
+            $result[$service['id']] = $service['title'];
+        }
+        return $result;
+    }
 }

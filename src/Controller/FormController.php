@@ -5,11 +5,9 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Entity\Order;
+use App\Form\Type\OrderType;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,7 +17,7 @@ class FormController extends AbstractController
     /**
      * @Route("/form", name="app_form")
      */
-    public function index(Request $request): Response
+    public function index(Request $request, EntityManagerInterface $em): Response
     {
         if (!$this->getUser()) {
             return $this->render(
@@ -30,14 +28,24 @@ class FormController extends AbstractController
         }
 
         $order = new Order();
+        $order->setUserId($this->getUser()->getId());
         $order->setEmail($this->getUser()->getEmail());
+        $order->setPrice(0);
 
-        $form = $this->createFormBuilder($order)
-            ->add('serviceId', IntegerType::class)
-            ->add('email', EmailType::class, ['default' => $this->getUser()->getEmail()])
-            ->add('save', SubmitType::class, ['label' => 'Подтвердить'])
-            ->getForm();
+        $form = $this->createForm(OrderType::class, $order);
 
-        return $this->render('form/index.html.twig', ['form' => $form->createView()]);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $order = $form->getData();
+
+            $em->persist($order);
+            $em->flush();
+
+            return $this->redirectToRoute('app_order', ['send_succes' => 1]);
+        }
+
+        return $this->renderForm('form/index.html.twig', ['form' => $form]);
     }
 }

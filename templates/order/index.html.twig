@@ -15,8 +15,8 @@
     {% for order in orders %}
         <div class="row">
             <div class="col-4">
-                {% if order.service.title %}
-                    {{ order.service.title|e }}
+                {% if order.serviceId %}
+                    {{ services[order.serviceId]|e }}
                 {% else %}
                     <div class="text-center">-</div>
                 {% endif %}

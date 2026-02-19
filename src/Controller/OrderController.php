@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Repository\OrderRepository;
+use App\Repository\ServiceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,7 +15,7 @@ class OrderController extends AbstractController
     /**
      * @Route("/order", name="app_order")
      */
-    public function index(OrderRepository $orderRepository): Response
+    public function index(OrderRepository $orderRepository, ServiceRepository $serviceRepository): Response
     {
         if (!$this->getUser()) {
             return $this->render(
@@ -25,7 +26,8 @@ class OrderController extends AbstractController
         }
 
         $orders = $orderRepository->getOrdersByUser($this->getUser());
+        $services = $serviceRepository->getNamesActiveServices();
 
-        return $this->render('order/index.html.twig', ['orders' => $orders]);
+        return $this->render('order/index.html.twig', ['orders' => $orders, 'services' => $services]);
     }
 }
