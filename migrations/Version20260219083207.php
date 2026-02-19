@@ -22,9 +22,11 @@ final class Version20260219083207 extends AbstractMigration
         $this->addSql('
 CREATE TABLE  `' . self::TABLENAME . '` (
     id INT AUTO_INCREMENT NOT NULL,
-    service_id INT DEFAULT NOT NULL,
-    price INT DEFAULT NOT NULL,
-    PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4
+    service_id INT NOT NULL,
+    email VARCHAR(180) NOT NULL,
+    price INT NOT NULL,
+    PRIMARY KEY(id)
+) DEFAULT CHARACTER SET utf8mb4
         ');
     }
 

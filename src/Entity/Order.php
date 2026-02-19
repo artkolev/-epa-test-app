@@ -29,6 +29,16 @@ class Order
         }
     }
 
+    #[ORM\Column(type: 'string', length: 180, unique: true)]
+    private ?string $email {
+        get {
+            return $this->email;
+        }
+        set {
+            $this->email = $value;
+        }
+    }
+
     #[ORM\Column(type: 'integer')]
     #[ORM\ManyToOne(targetEntity: Service::class, cascade: ['persist'], inversedBy: 'ServiceOrders')]
     private int $price {

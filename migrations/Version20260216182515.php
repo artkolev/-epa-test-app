@@ -27,7 +27,8 @@ CREATE TABLE  `' . self::TABLENAME . '` (
     password VARCHAR(255) NOT NULL,
     sault VARCHAR(255) NOT NULL DEFAULT \'\',
     UNIQUE INDEX UNIQ_8D93D649E7927C74 (email),
-    PRIMARY KEY (id)) DEFAULT CHARACTER SET utf8mb4
+    PRIMARY KEY (id)
+) DEFAULT CHARACTER SET utf8mb4
         ');
     }
 

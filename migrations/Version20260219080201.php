@@ -23,8 +23,9 @@ final class Version20260219080201 extends AbstractMigration
 CREATE TABLE  `' . self::TABLENAME . '` (
     id INT AUTO_INCREMENT NOT NULL,
     title VARCHAR(255) NOT NULL,
-    price INT DEFAULT NOT NULL,
-    PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4
+    price INT NOT NULL,
+    PRIMARY KEY (id)
+) DEFAULT CHARACTER SET utf8mb4
         ');
     }
 

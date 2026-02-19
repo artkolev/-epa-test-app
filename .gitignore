@@ -14,7 +14,25 @@
 .phpunit.result.cache
 ###< phpunit/phpunit ###
 
-###> symfony/phpunit-bridge ###
-.phpunit.result.cache
-/phpunit.xml
-###< symfony/phpunit-bridge ###
+*.patch
+*.diff
+*.orig
+*.rej
+*.cache
+
+# Файлы IDE
+.idea
+.vscode
+.settings
+.buildpath
+nbproject
+*.code-workspace
+
+!.gitignore
+!.chef
+
+# windows thumbnail cache
+Thumbs.db
+
+# composer itself is not needed
+composer.phar
