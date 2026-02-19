@@ -20,6 +20,17 @@ class Order
     }
 
     #[ORM\Column(type: 'integer')]
+    #[ORM\ManyToOne(targetEntity: User::class, cascade: ['persist'], inversedBy: 'ServiceOrders')]
+    private int $userId {
+        get {
+            return $this->userId;
+        }
+        set {
+            $this->userId = $value;
+        }
+    }
+
+    #[ORM\Column(type: 'integer')]
     private int $serviceId {
         get {
             return $this->serviceId;

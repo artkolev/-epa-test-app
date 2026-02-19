@@ -33,6 +33,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string')]
     private string $sault;
 
+    #[ORM\OneToMany(targetEntity: Order::class, mappedBy: "id")]
+    private array $userOrders {
+        get {
+            return $this->userOrders;
+        }
+        set {
+            $this->userOrders = $value;
+        }
+    }
+
     public function getEmail(): ?string
     {
         return $this->email;

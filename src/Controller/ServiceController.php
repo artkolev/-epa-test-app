@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -8,10 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class FormController extends AbstractController
+class ServiceController extends AbstractController
 {
     /**
-     * @Route("/form", name="app_form")
+     * @Route("/service", name="app_service")
      */
     public function index(): Response
     {
@@ -23,6 +22,6 @@ class FormController extends AbstractController
             );
         }
 
-        return $this->render('form/index.html.twig');
+        return $this->render('service/index.html.twig');
     }
 }
