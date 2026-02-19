@@ -24,7 +24,7 @@ INSERT INTO `' . self::TABLENAME . '`
 VALUES (
     1,
     \'admin@example.com\',
-    \'["ROLE_USER","ROLE_ADMIN"]\',
+    \'["ROLE_USER"]\',
     \'$argon2id$v=19$m=65536,t=4,p=1$yEr9V85v4Fh5mCdUHG82tQ$z3eJH6/rSXaBMw+W/QxlXeYPHN+ljQFM42D4PF72dLA\'
 )
     ');
