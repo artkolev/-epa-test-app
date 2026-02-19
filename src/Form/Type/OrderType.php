@@ -21,11 +21,9 @@ class OrderType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $services = array_flip($this->serviceRepository->getNameActiveServices());
-
         $builder
             ->add('service_id', ChoiceType::class, [
-                'choices' => $services,
+                'choices' => array_flip($this->serviceRepository->getNameActiveServices()),
                 'label' => 'Услуга',
                 'placeholder' => 'Выберите услугу',
             ])

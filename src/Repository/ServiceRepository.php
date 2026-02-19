@@ -31,16 +31,23 @@ class ServiceRepository extends ServiceEntityRepository
             ->getArrayResult();
     }
 
-    public function getNameActiveServices()
+    public function getNameActiveServices(): array
     {
-        return $this->createQueryBuilder('s')
-            ->select('s.title')
+        $services = $this->createQueryBuilder('s')
+            ->select('s.id, s.title')
             ->andWhere('s.active = 1')
             ->getQuery()
-            ->getSingleColumnResult();
+            ->getArrayResult();
+
+        $result = [];
+        foreach ($services as $service) {
+            $result[$service['id']] = $service['title'];
+        }
+
+        return $result;
     }
 
-    public function getNamesActiveServices()
+    public function getNamesActiveServices(): array
     {
         $services = $this->createQueryBuilder('s')
         ->select('s.id, s.title')
@@ -52,6 +59,7 @@ class ServiceRepository extends ServiceEntityRepository
         foreach ($services as $service) {
             $result[$service['id']] = $service['title'];
         }
+
         return $result;
     }
 }
