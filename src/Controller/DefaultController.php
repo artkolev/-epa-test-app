@@ -19,9 +19,9 @@ final class DefaultController extends AbstractController
     public function index(): Response
     {
         if (!$this->getUser()) {
-            return $this->redirectToRoute('login');
+            return $this->redirectToRoute('app_login');
         }
 
-        return $this->redirectToRoute('form');
+        return $this->redirectToRoute('app_form');
     }
 }

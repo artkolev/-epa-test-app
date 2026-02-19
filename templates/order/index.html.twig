@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ваши заказы{% endblock %}
+
+{% block body %}
+    <h2 class="mb-5">
+        Ваши заказы
+    </h2>
+
+    <div class="row text-center align-items-center bg-light">
+        <div class="col-4">Сервис</div>
+        <div class="col-4">Электронная почта</div>
+        <div class="col-4">Стоимость</div>
+    </div>
+    {% for order in orders %}
+        <div class="row">
+            <div class="col-4">
+                {% if order.service.title %}
+                    {{ order.service.title|e }}
+                {% else %}
+                    <div class="text-center">-</div>
+                {% endif %}
+            </div>
+            <div class="col-4">
+                {% if order.email %}
+                    {{ order.email|e }}
+                {% else %}
+                    <div class="text-center">-</div>
+                {% endif %}
+            </div>
+            <div class="col-4">
+                {% if order.price%}
+                    {{ order.price|e }}
+                {% else %}
+                    <div class="text-center">-</div>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

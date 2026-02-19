@@ -15,12 +15,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
-    private int $id {
-        get {
-            return $this->id;
-        }
-    }
-
+    private ?int $id;
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     private ?string $email;
 
@@ -34,13 +29,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private string $sault;
 
     #[ORM\OneToMany(targetEntity: Order::class, mappedBy: "id")]
-    private array $userOrders {
+    private $userOrders {
         get {
             return $this->userOrders;
         }
         set {
             $this->userOrders = $value;
         }
+    }
+
+    public function getId(): ?int
+    {
+        return $this->id;
     }
 
     public function getEmail(): ?string

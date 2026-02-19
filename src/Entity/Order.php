@@ -20,7 +20,7 @@ class Order
     }
 
     #[ORM\Column(type: 'integer')]
-    #[ORM\ManyToOne(targetEntity: User::class, cascade: ['persist'], inversedBy: 'ServiceOrders')]
+    #[ORM\ManyToOne(targetEntity: User::class, cascade: ['persist'], inversedBy: 'UserOrders')]
     private int $userId {
         get {
             return $this->userId;
