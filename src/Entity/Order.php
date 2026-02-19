@@ -13,52 +13,65 @@ class Order
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null {
-        get {
-            return $this->id;
-        }
-    }
+    private ?int $id = null;
 
     #[ORM\Column(type: 'integer')]
     #[ORM\ManyToOne(targetEntity: User::class, cascade: ['persist'], inversedBy: 'UserOrders')]
-    private int $userId {
-        get {
-            return $this->userId;
-        }
-        set {
-            $this->userId = $value;
-        }
-    }
-
-    #[ORM\Column(type: 'integer')]
-    private int $serviceId {
-        get {
-            return $this->serviceId;
-        }
-        set {
-            $this->serviceId = $value;
-        }
-    }
-
-    #[ORM\Column(type: 'string', length: 180, unique: true)]
-    private ?string $email {
-        get {
-            return $this->email;
-        }
-        set {
-            $this->email = $value;
-        }
-    }
+    private int $userId;
 
     #[ORM\Column(type: 'integer')]
     #[ORM\ManyToOne(targetEntity: Service::class, cascade: ['persist'], inversedBy: 'ServiceOrders')]
-    private int $price {
-        get {
-            return $this->price;
-        }
-        set {
-            $this->price = $value;
-        }
+    private int $serviceId;
+
+    #[ORM\Column(type: 'string', length: 180, unique: true)]
+    private ?string $email;
+
+    #[ORM\Column(type: 'integer')]
+    private int $price;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getUserId(): int
+    {
+        return $this->userId;
+    }
+
+    public function setUserId(int $userId): void
+    {
+        $this->userId = $userId;
+    }
+
+    public function getServiceId(): int
+    {
+        return $this->serviceId;
+    }
+
+    public function setServiceId(int $serviceId): void
+    {
+        $this->serviceId = $serviceId;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): void
+    {
+        $this->email = $email;
+    }
+
+    public function getPrice(): int
+    {
+        return $this->price;
+    }
+
+    public function setPrice(int $price): void
+    {
+        $this->price = $price;
     }
 
 }
