@@ -36,4 +36,15 @@ class Service
             $this->price = $value;
         }
     }
+
+    #[ORM\OneToMany(targetEntity: Order::class, mappedBy: "id")]
+    private array $serviceOrders {
+        get {
+            return $this->serviceOrders;
+        }
+        set {
+            $this->serviceOrders = $value;
+        }
+    }
+
 }

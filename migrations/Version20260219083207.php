@@ -7,14 +7,14 @@ namespace DoctrineMigrations;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 
-final class Version20260219080201 extends AbstractMigration
+final class Version20260219083207 extends AbstractMigration
 {
 
-    const string TABLENAME = 'service';
+    const string TABLENAME = 'order';
 
     public function getDescription(): string
     {
-        return 'Add service table';
+        return 'Add order table';
     }
 
     public function up(Schema $schema): void
@@ -22,7 +22,7 @@ final class Version20260219080201 extends AbstractMigration
         $this->addSql('
 CREATE TABLE  `' . self::TABLENAME . '` (
     id INT AUTO_INCREMENT NOT NULL,
-    title VARCHAR(255) NOT NULL,
+    service_id INT DEFAULT NOT NULL,
     price INT DEFAULT NOT NULL,
     PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4
         ');
