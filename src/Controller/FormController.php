@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Entity\Order;
 use App\Form\Type\OrderType;
+use App\Repository\ServiceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,7 +18,7 @@ class FormController extends AbstractController
     /**
      * @Route("/form", name="app_form")
      */
-    public function index(Request $request, EntityManagerInterface $em): Response
+    public function index(Request $request, EntityManagerInterface $em, ServiceRepository $serviceRepository): Response
     {
         if (!$this->getUser()) {
             return $this->render(
@@ -38,7 +39,9 @@ class FormController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            /** @var Order $order */
             $order = $form->getData();
+            $order->setPrice((int) $serviceRepository->find($order->getServiceId())->getPrice());
 
             $em->persist($order);
             $em->flush();
