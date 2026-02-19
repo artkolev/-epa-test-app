@@ -3,6 +3,14 @@
 {% block title %}Ваши заказы{% endblock %}
 
 {% block body %}
+    {% if app.request.query.get('send_succes', null) == 1 %}
+        <div class="row justify-content-center">
+            <div class="col-3 alert alert-success text-center" role="alert">
+                Заказ успешно добавлен
+            </div>
+        </div>
+    {% endif %}
+
     <h2 class="mb-5">
         Ваши заказы
     </h2>

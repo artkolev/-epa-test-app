@@ -30,7 +30,7 @@ class OrderType extends AbstractType
                 'placeholder' => 'Выберите услугу',
             ])
             ->add('email', EmailType::class, ['label' => 'Электронная почта'])
-            ->add('price', IntegerType::class, ['label' => 'Стоимость'])
+            ->add('price', IntegerType::class, ['label' => 'Стоимость', 'disabled' => true])
             ->add('save', SubmitType::class, ['label' => 'Подтвердить']);
     }
 }
