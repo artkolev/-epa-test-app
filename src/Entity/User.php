@@ -25,6 +25,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string')]
     private string $password;
+
+    #[ORM\Column(type: 'string')]
     private string $sault;
 
     public function getId(): ?int

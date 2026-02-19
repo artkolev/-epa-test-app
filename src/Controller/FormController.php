@@ -11,12 +11,16 @@ use Symfony\Component\Routing\Annotation\Route;
 class FormController extends AbstractController
 {
     /**
-     * @Route("/form", name="form")
+     * @Route("/form", name="app_form")
      */
     public function index(): Response
     {
         if (!$this->getUser()) {
-            return $this->redirectToRoute('login');
+            return $this->render(
+                'error/401_unauthorized.html.twig',
+                [],
+                new Response(null, Response::HTTP_UNAUTHORIZED)
+            );
         }
     }
 }
