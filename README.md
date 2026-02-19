@@ -1,5 +1,5 @@
-### Test app for EPA
+# Test app for EPA
 
-# Test credentials
+### Test credentials
 * e-mail: admin@example.com
 * password: password
