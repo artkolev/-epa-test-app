@@ -26,7 +26,8 @@ CREATE TABLE  `' . self::TABLENAME . '` (
     price INT NOT NULL,
     active TINYINT(1) NOT NULL DEFAULT 1,
     PRIMARY KEY (id),
-    INDEX active (active)
+    UNIQUE KEY UK_title (title),
+    INDEX IDX_active (active)
 ) DEFAULT CHARACTER SET utf8mb4
         ');
     }
