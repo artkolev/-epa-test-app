@@ -1,27 +1,14 @@
 {
-    "codeception/codeception": {
-        "version": "5.3",
+    "doctrine/annotations": {
+        "version": "2.0",
         "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
+            "repo": "github.com/symfony/recipes",
             "branch": "main",
-            "version": "5.0",
-            "ref": "d2e352c4777ebd645b269ecdf793deccce16bf50"
+            "version": "1.0",
+            "ref": "a2759dd6123694c8d901d0ec80006e044c2e6457"
         },
         "files": [
-            "codeception.yml",
-            "tests/Acceptance.suite.yml",
-            "tests/Acceptance/.gitignore",
-            "tests/Functional.suite.yml",
-            "tests/Functional/.gitignore",
-            "tests/Support/AcceptanceTester.php",
-            "tests/Support/Data/.gitignore",
-            "tests/Support/FunctionalTester.php",
-            "tests/Support/Helper/.gitignore",
-            "tests/Support/UnitTester.php",
-            "tests/Support/_generated/.gitignore",
-            "tests/Unit.suite.yml",
-            "tests/Unit/.gitignore",
-            "tests/_output/.gitignore"
+            "config/routes/annotations.yaml"
         ]
     },
     "doctrine/deprecations": {
@@ -45,6 +32,18 @@
             "config/packages/doctrine.yaml",
             "src/Entity/.gitignore",
             "src/Repository/.gitignore"
+        ]
+    },
+    "doctrine/doctrine-fixtures-bundle": {
+        "version": "4.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "3.0",
+            "ref": "1f5514cfa15b947298df4d771e694e578d4c204d"
+        },
+        "files": [
+            "src/DataFixtures/AppFixtures.php"
         ]
     },
     "doctrine/doctrine-migrations-bundle": {
